@@ -1,5 +1,37 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/item_detail"
-    style="?android:attr/textAppearanceLarge" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:padding="16dp" android:textIsSelectable="true"
-    tools:context=".ItemDetailFragment" />
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <!--
+     El fragment que contiene el detalle mostrará el botón. Este consta de un Linear layout
+     donde colocar objetos de la paleta.
+     -->
+
+     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:tools="http://schemas.android.com/tools"
+         android:id="@+id/item_detail"
+         style="?android:attr/textAppearanceLarge"
+         android:layout_width="156dp"
+         android:layout_height="match_parent"
+         android:padding="16dp"
+         android:textIsSelectable="true"
+         tools:context=".ItemDetailFragment"
+         android:layout_above="@+id/button" />
+
+        <!--
+        Boton con id, texto, ajustado en alto a su contenido y en ancho a su padre; linearLayout del Fragment
+        -->
+     <Button
+
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Cerrar"
+         android:id="@+id/boton"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:layout_gravity="center_vertical" />
+
+ </LinearLayout>
