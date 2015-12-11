@@ -77,6 +77,7 @@ public class ItemDetailFragment extends Fragment {
                     if (fragment == null || isInLayout()) {
                         /*Si no está el fragment1 en el layout; quiere decir que esta en modo Portrait; por lo que cerrará
                         el activity que contiene el Fragment2 para volver a ver el primero*/
+                        getActivity().setResult(getActivity().RESULT_OK);//Este get activity nos devolverá si el resultado es satisfactorio o OK
                         getActivity().finish();
                     } else {
                         //Si está el primero, quiere decir que está en modo Land; ya que ambos estan en pantalla, por lo tanto, solo borrará el contenido

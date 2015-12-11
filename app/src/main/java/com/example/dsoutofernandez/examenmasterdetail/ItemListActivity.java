@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.Toast;
 
 
 /**
@@ -27,6 +28,7 @@ import android.view.View;
  */
 public class ItemListActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
+    private static final int CHILD_REQUEST = 0;
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -92,7 +94,18 @@ public class ItemListActivity extends AppCompatActivity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, ItemDetailActivity.class);
             detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
-            startActivity(detailIntent);
+            //startActivity(detailIntent);
+            //Iniciamos la activity pero ahora para que nos de un resultado
+            //declaramos previamente arriba el valor CHILD_REQUEST que es donde almacenaremos el resultado
+            startActivityForResult(detailIntent,CHILD_REQUEST);
+            //EN este caso solo necesitaros uno de los resultado; en la llamada del activityResult mandaremos una variable que no necesitaremos
+            int EstaNoLaNecesito=0;
+            //Lamamos al OnActivityResult y le pasamos los parametros
+            onActivityResult(CHILD_REQUEST,EstaNoLaNecesito,detailIntent);
+
         }
     }
+
+
 }
+
