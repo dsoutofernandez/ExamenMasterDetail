@@ -25,7 +25,6 @@
         Boton con id, texto, ajustado en alto a su contenido y en ancho a su padre; linearLayout del Fragment
         -->
      <Button
-
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:text="Cerrar"
