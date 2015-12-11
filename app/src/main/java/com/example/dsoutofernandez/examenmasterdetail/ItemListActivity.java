@@ -101,7 +101,19 @@ public class ItemListActivity extends AppCompatActivity
             //EN este caso solo necesitaros uno de los resultado; en la llamada del activityResult mandaremos una variable que no necesitaremos
             int EstaNoLaNecesito=0;
             //Lamamos al OnActivityResult y le pasamos los parametros
-            onActivityResult(CHILD_REQUEST,EstaNoLaNecesito,detailIntent);
+            onActivityResult(CHILD_REQUEST, EstaNoLaNecesito, detailIntent);
+
+        }
+    }
+//Sobreescribimos el metodo onActivityResult para que en caso de result_ok nos lance una tostada
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        //Evaluamos el codigo del resultado que si es correcto, lanzara la toast
+        if (resultCode == RESULT_OK) {
+
+            Toast.makeText(ItemListActivity.this, "OK", Toast.LENGTH_SHORT).show();
+
 
         }
     }
