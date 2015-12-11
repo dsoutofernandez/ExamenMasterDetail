@@ -19,6 +19,7 @@ import com.example.dsoutofernandez.examenmasterdetail.dummy.DummyContent;
  * on handsets.
  */
 public class ItemDetailFragment extends Fragment {
+    View rootView;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -58,7 +59,7 @@ public class ItemDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
+        rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
 
 
         // Show the dummy content as text in a TextView.
@@ -67,7 +68,25 @@ public class ItemDetailFragment extends Fragment {
 
             //Instanciamos un objeto de tipo botón y lo asociamos al boton del detail fragment
             Button button = (Button) rootView.findViewById(R.id.boton);
-            
+            //Añadimos el listener para el OnClick y creamos un objeto ItemListFragment. Lo asociamos al activity_item_list a traves de su id.
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ItemListFragment fragment = (ItemListFragment) getFragmentManager().findFragmentById(R.id.item_list);
+                    //Evaluamos si el fragment está en el layout
+                    if (fragment == null || isInLayout()) {
+                        /*Si no está el fragment1 en el layout; quiere decir que esta en modo Portrait; por lo que cerrará
+                        el activity que contiene el Fragment2 para volver a ver el primero*/
+                        getActivity().finish();
+                    } else {
+                        //Si está el primero, quiere decir que está en modo Land; ya que ambos estan en pantalla, por lo tanto, solo borrará el contenido
+                        //Para esto es necesario configurar el modo Land previamente...
+                        ((TextView) rootView.findViewById(R.id.item_detail)).setText("");
+                    }
+                }
+
+
+            });
 
         }
 
