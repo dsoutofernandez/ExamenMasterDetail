@@ -6,6 +6,7 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.dsoutofernandez.examenmasterdetail.dummy.DummyContent;
 
@@ -116,6 +117,10 @@ public class ItemListFragment extends ListFragment {
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
         mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+        //Aqui implementariamos el comunicador en la ItemListFragment y evaluariamos la variable LandScape para conocer su estado
+        //y lanzar la tostada con un if() que evaluara si es true
+        Toast.makeText(getContext(), "Tumbado", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -137,6 +142,8 @@ public class ItemListFragment extends ListFragment {
         getListView().setChoiceMode(activateOnItemClick
                 ? ListView.CHOICE_MODE_SINGLE
                 : ListView.CHOICE_MODE_NONE);
+
+
     }
 
     private void setActivatedPosition(int position) {
@@ -144,6 +151,7 @@ public class ItemListFragment extends ListFragment {
             getListView().setItemChecked(mActivatedPosition, false);
         } else {
             getListView().setItemChecked(position, true);
+
         }
 
         mActivatedPosition = position;
